@@ -1,0 +1,85 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="artists"
+            type="com.example.connectinternet.json.Artists" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Background ImageView for artist image -->
+            <ImageView
+                android:id="@+id/artistImageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@{artists.image_url}"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"/>
+
+            <!-- Artist content -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp">
+
+                <!-- Artist Name -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{artists.name}"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_gravity="center"
+                    android:paddingBottom="8dp" />
+
+                <!-- Artist Aliases -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{artists.aliases.toString()}"
+                    android:textSize="16sp"
+                    android:textColor="#FFFFFF"
+                    android:layout_gravity="center"
+                    android:paddingBottom="8dp" />
+
+                <!-- Artist Links -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{artists.links.toString()}"
+                    android:textSize="16sp"
+                    android:textColor="#FFFFFF"
+                    android:layout_gravity="center"
+                    android:paddingBottom="8dp" />
+
+                <!-- Artist Policy Information -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{artists.policy_repost != null ? artists.policy_repost : 'No repost policy'}"
+                    android:textSize="16sp"
+                    android:textColor="#FFFFFF"
+                    android:layout_gravity="center"
+                    android:paddingBottom="8dp" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
